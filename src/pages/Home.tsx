@@ -21,17 +21,17 @@ import SeriesIndex from '@/components/SeriesIndex';
 const Home = () => (
   <>
     <section className="bg-ink text-paper">
-      <div className="container-page pb-16 pt-12 md:pb-24 md:pt-20">
+      <div className="container-page pb-14 pt-10 md:pb-24 md:pt-20">
         <p className="catalog text-paper/50">{AFFILIATION}</p>
-        <div className="mt-8 flex flex-col gap-10 md:flex-row md:items-center md:justify-between md:gap-12">
-          <h1 className="text-[clamp(3rem,9vw,8rem)] font-normal leading-[0.95] tracking-tight">
+        <div className="mt-8 flex items-center justify-between gap-4 md:gap-12">
+          <h1 className="text-[clamp(2.1rem,9vw,8rem)] font-normal leading-[0.95] tracking-tight">
             Mathias
             <br />
             Chukwudi
             <br />
             <span className="text-paper/80">Isiani</span>
           </h1>
-          <figure className="w-56 shrink-0 rotate-[3deg] border border-paper/25 bg-graphite p-2 pb-6 md:w-72">
+          <figure className="w-32 shrink-0 rotate-[3deg] border border-paper/25 bg-graphite p-1.5 pb-5 sm:w-44 md:w-72 md:p-2 md:pb-6">
             <img src={PORTRAIT} alt={NAME} className="aspect-[4/5] w-full object-cover object-top" />
             <figcaption className="catalog mt-3 text-[10px] text-paper/50">M. C. Isiani</figcaption>
           </figure>

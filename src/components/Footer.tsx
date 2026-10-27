@@ -1,7 +1,7 @@
 import { NAME } from '@/services/data/profile';
 
 const Footer = () => (
-  <footer className="bg-ink pb-8 text-center">
+  <footer className="border-t border-paper/15 bg-ink py-8 text-center">
     <p className="catalog text-paper/40">
       © {new Date().getFullYear()} {NAME}
     </p>
