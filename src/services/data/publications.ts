@@ -325,9 +325,9 @@ const LINKS: [string, string][] = [
   ['infrastructural south', doi('10.1017/asr.2024.134')],
   ['everyday state', 'https://asq.africa.ufl.edu/current-issue/'],
   // ResearchGate pages, used where no publisher link was available.
-  ['tapestry of city life', rg('404326080_The_tapestry_of_city_life_Colonial_modernity_and_everyday_urban_experiences_in_twentieth-century_Onitsha_Nigeria')],
-  ['architecture of the bight', rg('413931107_The_architecture_of_the_bight_of_Biafra_Spatial_entanglements_by_Joseph_Godlewski_Abingdon_Routledge_2024_312_pp_13759_hardback_ISBN_978-1-0327-0404-3')],
-  ['aesthetics of belonging', rg('405640918_Claudia_Gastrow_The_Aesthetics_of_Belonging_Indigenous_Urbanism_and_City_Building_in_Oil-Boom_Luanda_University_of_North_Carolina_Press_xi_220_pp_2995_Paperback_ISBN_9781469682181')],
+  ['tapestry of city life', doi('10.1016/j.cities.2026.106817')],
+  ['architecture of the bight', doi('10.1080/17449855.2026.2722811')],
+  ['aesthetics of belonging', doi('10.1017/asr.2026.10267')],
   ['egypt in historical', rg('340465025_Egypt_in_Historical_Perspective_Some_Thoughts')],
   ['back to land', rg('340464905_Back_to_Land_Interrogating_the_Israeli_Moshav_-Igbariam_Farm_Settlement_Model_in_Eastern_Nigeria_1961-1970')],
   ['amalgamation', rg('336901133_AMALGAMATION_OF_NORTHERN_AND_SOUTHERN_PROTECTORATES_OF_NIGERIA_BLESSING_OR_CURSE')],
