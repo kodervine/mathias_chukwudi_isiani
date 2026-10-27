@@ -11,10 +11,14 @@ import {
   PORTRAIT,
   PUBLICATIONS_LINK,
   SCHOLAR_RECORD,
+  SECONDARY_AFFILIATION,
+  SECONDARY_EMAIL,
   STATEMENT,
   TITLE,
+  UNN_PROFILE,
 } from '@/services/data/profile';
-import { catalogue, topCited } from '@/services/data/publications';
+import { catalogue, selected } from '@/services/data/publications';
+import { APPOINTMENTS, presentations } from '@/services/data/presentations';
 import Reel from '@/components/Reel';
 import SeriesIndex from '@/components/SeriesIndex';
 
@@ -65,10 +69,9 @@ const Home = () => (
     <section id="publications" className="container-page scroll-mt-16 py-24">
       <div className="mb-10 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
         <h2 className="catalog text-ink/60">Selected publications</h2>
-        <p className="catalog text-ink/40">{catalogue.length} publications in total</p>
       </div>
       <ul className="divide-y divide-ink/15 border-y border-ink/15">
-        {topCited.map((p) => (
+        {selected.map((p, i) => (
           <li key={p.id}>
             <Link
               to={`/publications?q=${encodeURIComponent(p.title.slice(0, 40))}`}
@@ -82,7 +85,7 @@ const Home = () => (
                 <span className="mt-1 block text-sm italic text-ink/55">{p.venue}</span>
               </span>
               <span className="catalog text-ink/50 md:text-right">
-                {p.citations} citations
+                {i < 2 ? `${p.citations} citations` : p.type === 'Review' ? 'Book review' : ''}
               </span>
             </Link>
           </li>
@@ -94,6 +97,42 @@ const Home = () => (
       >
         View all publications <ArrowRight size={14} />
       </Link>
+    </section>
+
+    <section className="container-page py-24">
+      <div className="grid gap-16 md:grid-cols-2">
+        <div>
+          <h2 className="catalog mb-10 text-ink/60">Academic appointments</h2>
+          <ul className="divide-y divide-ink/15 border-y border-ink/15">
+            {APPOINTMENTS.map((a) => (
+              <li key={a.role} className="grid gap-1 py-5 sm:grid-cols-[8rem_1fr] sm:gap-6">
+                <span className="catalog text-ink/45">{a.period}</span>
+                <span>
+                  <span className="block text-lg font-medium">{a.role}</span>
+                  <span className="block text-sm text-ink/60">{a.place}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 className="catalog mb-10 text-ink/60">Conferences and workshops</h2>
+          <ul className="divide-y divide-ink/15 border-y border-ink/15">
+            {presentations.slice(0, 4).map((p) => (
+              <li key={p.event + p.year} className="grid gap-1 py-5 sm:grid-cols-[4rem_1fr] sm:gap-6">
+                <span className="catalog text-ink/45">{p.year}</span>
+                <span className="text-sm leading-snug">{p.event}</span>
+              </li>
+            ))}
+          </ul>
+          <Link
+            to="/presentations"
+            className="catalog mt-8 inline-flex items-center gap-2 text-clay-dark hover:text-clay"
+          >
+            View all conferences <ArrowRight size={14} />
+          </Link>
+        </div>
+      </div>
     </section>
 
     <section id="contact" className="scroll-mt-16 bg-ink text-paper">
@@ -122,17 +161,24 @@ const Home = () => (
           >
             {EMAIL}
           </a>
+          <a href={`mailto:${SECONDARY_EMAIL}`} className="mt-1 block text-paper/70 hover:text-clay">
+            {SECONDARY_EMAIL}
+          </a>
           <p className="mt-4 leading-relaxed text-paper/60">
             {AFFILIATION}
             <br />
             {ADDRESS}
           </p>
+          <p className="mt-3 text-paper/45">Lecturer II, {SECONDARY_AFFILIATION}</p>
           <div className="mt-5 flex flex-col gap-2 text-clay">
-            <a href={BERKELEY_PROFILE} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:underline">
-              Departmental profile <ExternalLink size={12} />
-            </a>
             <a href={PUBLICATIONS_LINK} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:underline">
-              Publications record <ExternalLink size={12} />
+              Google Scholar profile <ExternalLink size={12} />
+            </a>
+            <a href={BERKELEY_PROFILE} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:underline">
+              UC Berkeley departmental profile <ExternalLink size={12} />
+            </a>
+            <a href={UNN_PROFILE} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:underline">
+              University of Nigeria, Nsukka staff profile <ExternalLink size={12} />
             </a>
           </div>
         </div>

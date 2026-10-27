@@ -7,7 +7,8 @@ export const EMAIL = 'chukwudi@berkeley.edu';
 export const ADDRESS = '3229 Dwinelle Hall, University of California, Berkeley, CA 94720-2550';
 export const PORTRAIT = Portrait;
 export const BERKELEY_PROFILE = 'https://history.berkeley.edu/mathias-chukwudi-isiani';
-export const PUBLICATIONS_LINK = 'https://bit.ly/Mathiaspublications';
+export const PUBLICATIONS_LINK = 'https://scholar.google.com/citations?user=7vnjV5AAAAAJ&hl=en';
+export const UNN_PROFILE = 'https://staffprofile.unn.edu.ng/profile/4297';
 export const SCHOLAR_NOTE = 'Google Scholar';
 
 export const STATEMENT =
@@ -57,9 +58,14 @@ export const SCHOLAR_RECORD = [
 ];
 
 export const ASSOCIATIONS = [
-  'Urban History Association (UHA)',
+  'Association for the Study of the Middle East and Africa (ASMEA)',
   'African Studies Association (ASA)',
+  'West African Research Association (WARA)',
+  'Ife Institute of Advanced Studies (Fellow)',
+  'Society for the History of Technology (SHOT)',
   'Lagos Studies Association (LSA)',
   'Historical Society of Nigeria (HSN)',
-  'Association for the Study of the Middle East and Africa (ASMEA)',
 ];
+
+export const SECONDARY_EMAIL = 'mathias.isiani@unn.edu.ng';
+export const SECONDARY_AFFILIATION = 'Department of History and International Studies, University of Nigeria, Nsukka';

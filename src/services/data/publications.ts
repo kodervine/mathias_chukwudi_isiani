@@ -204,6 +204,63 @@ export const publications: Publication[] = [
     year: 2023,
   },
   {
+    title: 'The reggae artistes and the marijuana legalization struggle: The Bob Marley example',
+    authors: ISIANI,
+    venue: 'Journal of Drug and Alcohol Research 12',
+    type: 'Article',
+    year: 2024,
+  },
+  {
+    title: 'The hype of coronavirus pandemic in Southeast Nigeria: Some thoughts',
+    authors: ISIANI,
+    venue: 'South Asian Journal of Social Sciences and Humanities 2(1), 116–140',
+    type: 'Article',
+    year: 2021,
+  },
+  {
+    title: 'Religious reactions and interpretations of Covid-19 in Nigeria',
+    authors: ISIANI,
+    venue: 'Nigerian Journal of Social Sciences 14(2), 47–58',
+    type: 'Article',
+    year: 2020,
+  },
+  {
+    title:
+      '“The forgotten treasure in the midst of wants”: An assessment of Igbariam Farm Settlement Scheme in Eastern Nigeria, 1961–1979',
+    authors: ISIANI,
+    venue: 'International Journal of Scientific and Research Publications 10(2), 503–519',
+    type: 'Article',
+    year: 2020,
+  },
+  {
+    title: 'Resource competition and agricultural revolution in Eastern Nigeria, 1954–1975',
+    authors: ISIANI,
+    venue: 'COOU International Journal of Humanities 1(1), 58–83',
+    type: 'Article',
+    year: 2019,
+  },
+  {
+    title: 'Education and youth empowerment in Nigeria: An appraisal',
+    authors: ISIANI,
+    venue: 'In C.C. Osakwe and L.F. Odeh (eds), History and the Niger Delta: Oil, Politics and Culture (Festschrift in honour of Professor S.O. Aghalino)',
+    type: 'Other',
+    year: 2021,
+  },
+  {
+    title: 'Ethnocentrism, cultural ideology and military leadership strategy of nations',
+    authors: ISIANI,
+    venue: 'In C.C. Osakwe et al. (eds), Evolving Trends in Socio-Economic and Military History (Festschrift in honour of Professor O.E. Tangban)',
+    type: 'Other',
+    year: 2020,
+  },
+  {
+    title: 'The green alternative: Herdsmen and food scarcity in Uzo-Uwani, Nsukka Division, Nigeria, 2016–2018',
+    authors: ISIANI,
+    venue: 'In E. Nwabueze (ed.), New Frontiers in Contemporary African Studies, 36–50',
+    type: 'Other',
+    year: 2019,
+  },
+  {
     title: 'Xenophobia: South Africa as a mirror on insecurity in Nigeria',
     authors: `NA Obi-Ani, ${ISIANI}, NE Enemchukwu`,
     venue: '',
@@ -228,10 +285,57 @@ export const CITATIONS_PER_YEAR = [
   { year: 2026, relative: 52 },
 ];
 
+const doi = (d: string) => `https://doi.org/${d}`;
+
+// Links taken from the University of Nigeria staff profile; matched by title fragment.
+const LINKS: [string, string][] = [
+  ['dark humour', doi('10.1093/afraf/adaf013')],
+  ['city of boys', doi('10.1016/j.cities.2024.105003')],
+  ['reggae artistes', doi('10.4303/JDAR/236226')],
+  ['no religion is superior', doi('10.1108/jchmsd-05-2022-0082')],
+  ['not all deities', doi('10.1108/JCHMSD-07-2021-0132')],
+  ['creativity, spirituality', doi('10.1108/JCHMSD-12-2020-0178')],
+  ['presumed urbanization', doi('10.1016/j.cities.2021.103399')],
+  ['international monetary fund', doi('10.1080/23311983.2021.1932283')],
+  ['socio-economic transformations', doi('10.1080/23311983.2021.1922154')],
+  ['hype of coronavirus', doi('10.48165/sajssh.2021.2109')],
+  ['primary healthcare', doi('10.1080/23311983.2020.1859075')],
+  ['nigerian immigrants', doi('10.1080/23311983.2020.1846262')],
+  ['social media and the covid', doi('10.1080/23311983.2020.1799483')],
+  ['urbanization in nigeria', doi('10.1016/j.cities.2020.102744')],
+  ['forgotten treasure', 'http://dx.doi.org/10.29322/IJSRP.10.02.2020.p9872'],
+  ['war and gender', 'https://cogito.ucdc.ro/COGITO%2029%20septembrie%202019.pdf'],
+  ['resource competition', 'https://coou.edu.ng/journals/coouijhsga/Vol1_Iss1/coouijhsga1119004.pdf'],
+  ['children of the soil', 'https://journals.flvc.org/ASQ/article/view/137782/143212'],
+  ['infrastructural south', doi('10.1017/asr.2024.134')],
+  ['everyday state', 'https://asq.africa.ufl.edu/current-issue/'],
+];
+
 export const catalogue = publications.map((p, i) => ({
   ...p,
   id: `MCI-${String(i + 1).padStart(4, '0')}`,
+  url: LINKS.find(([key]) => p.title.toLowerCase().includes(key))?.[1],
 }));
+
+// Home-page selection: the most cited paper first, then his own selection from the UC Berkeley profile.
+const SELECTED_KEYS = [
+  'social media and the covid',
+  'children of the soil',
+  'infrastructural south',
+  'everyday state',
+  'dark humour',
+  'city of boys',
+  'urbanization in nigeria',
+  'creativity, spirituality',
+  'socio-economic transformations',
+  'war and gender',
+];
+
+// Most cited first; uncited items follow in the order of his own list (sort is stable).
+export const selected = SELECTED_KEYS.flatMap((key) => {
+  const entry = catalogue.find((p) => p.title.toLowerCase().includes(key));
+  return entry ? [entry] : [];
+}).sort((a, b) => (b.citations ?? 0) - (a.citations ?? 0));
 
 export type CatalogueEntry = (typeof catalogue)[number];
 

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Search } from 'lucide-react';
+import { ExternalLink, Search } from 'lucide-react';
 import {
   catalogue,
   type PublicationType,
@@ -87,6 +87,16 @@ const Publications = () => {
                     <p className="mt-2 text-lg font-medium leading-snug">{p.title}</p>
                     <p className="mt-1 text-sm text-ink/65">{p.authors}</p>
                     {p.venue && <p className="text-sm italic text-ink/50">{p.venue}</p>}
+                    {p.url && (
+                      <a
+                        href={p.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="catalog mt-2 inline-flex items-center gap-1.5 text-clay-dark hover:text-clay"
+                      >
+                        View article <ExternalLink size={12} />
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

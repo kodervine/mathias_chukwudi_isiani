@@ -6,6 +6,7 @@ import { NAME } from '@/services/data/profile';
 export const NAV_LINKS = [
   { to: '/#research', label: 'Research' },
   { to: '/publications', label: 'Publications' },
+  { to: '/presentations', label: 'Conferences' },
   { to: '/#education', label: 'Education' },
   { to: '/#contact', label: 'Contact' },
 ];

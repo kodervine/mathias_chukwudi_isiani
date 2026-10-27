@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { catalogue } from '@/services/data/publications';
+import { presentations } from '@/services/data/presentations';
 
 interface Props {
   open: boolean;
@@ -19,6 +20,7 @@ const SECTIONS: Item[] = [
   { label: 'Selected publications', hint: 'section', to: '/#publications' },
   { label: 'Contact', hint: 'section', to: '/#contact' },
   { label: 'All publications', hint: 'page', to: '/publications' },
+  { label: 'Conferences and workshops', hint: 'page', to: '/presentations' },
 ];
 
 const CommandPalette = ({ open, onClose }: Props) => {
@@ -38,7 +40,15 @@ const CommandPalette = ({ open, onClose }: Props) => {
         hint: String(p.year ?? 'n.d.'),
         to: `/publications?q=${encodeURIComponent(p.title.slice(0, 40))}`,
       }));
-    return [...SECTIONS.filter((s) => s.label.toLowerCase().includes(q)), ...matches];
+    const talks = presentations
+      .filter((p) => `${p.year} ${p.event} ${p.place ?? ''} ${p.paper ?? ''}`.toLowerCase().includes(q))
+      .slice(0, 4)
+      .map<Item>((p) => ({
+        label: p.paper ?? p.event,
+        hint: `conference ${p.year}`,
+        to: `/presentations?q=${encodeURIComponent((p.paper ?? p.event).slice(0, 40))}`,
+      }));
+    return [...SECTIONS.filter((s) => s.label.toLowerCase().includes(q)), ...matches, ...talks];
   }, [query]);
 
   useEffect(() => {
@@ -86,7 +96,7 @@ const CommandPalette = ({ open, onClose }: Props) => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={onKeyDown}
-          placeholder="Search sections and publications"
+          placeholder="Search sections, publications and conferences"
           className="w-full border-b border-paper/15 bg-transparent px-5 py-4 font-mono text-sm outline-none placeholder:text-paper/40"
         />
         <ul className="max-h-80 overflow-y-auto py-2">
