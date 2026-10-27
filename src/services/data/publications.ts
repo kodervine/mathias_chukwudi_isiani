@@ -1,4 +1,4 @@
-export type PublicationType = 'Article' | 'Review' | 'Other';
+export type PublicationType = 'Article' | 'Review' | 'Chapter' | 'Other';
 
 export interface Publication {
   title: string;
@@ -243,29 +243,43 @@ export const publications: Publication[] = [
     title: 'Education and youth empowerment in Nigeria: An appraisal',
     authors: ISIANI,
     venue: 'In C.C. Osakwe and L.F. Odeh (eds), History and the Niger Delta: Oil, Politics and Culture (Festschrift in honour of Professor S.O. Aghalino)',
-    type: 'Other',
+    type: 'Chapter',
     year: 2021,
   },
   {
     title: 'Ethnocentrism, cultural ideology and military leadership strategy of nations',
     authors: ISIANI,
     venue: 'In C.C. Osakwe et al. (eds), Evolving Trends in Socio-Economic and Military History (Festschrift in honour of Professor O.E. Tangban)',
-    type: 'Other',
+    type: 'Chapter',
     year: 2020,
   },
   {
     title: 'The green alternative: Herdsmen and food scarcity in Uzo-Uwani, Nsukka Division, Nigeria, 2016–2018',
     authors: ISIANI,
     venue: 'In E. Nwabueze (ed.), New Frontiers in Contemporary African Studies, 36–50',
-    type: 'Other',
+    type: 'Chapter',
     year: 2019,
+  },
+  {
+    title: 'Religion and mental slavery in Nigeria: An analysis of Bob Marley’s “Redemption Song”',
+    authors: `KC Ugwu, NA Obi-Ani, ${ISIANI}`,
+    venue: 'Book chapter',
+    type: 'Chapter',
+    year: 2024,
+  },
+  {
+    title: 'Iwuewu: Unmasking Simon Odo, the enigmatic monarch of Satan, Enugu-Ezike, Southeast Nigeria',
+    authors: `KC Ugwu, NA Obi-Ani, ${ISIANI}`,
+    venue: 'Book chapter',
+    type: 'Chapter',
+    year: 2023,
   },
   {
     title: 'Xenophobia: South Africa as a mirror on insecurity in Nigeria',
     authors: `NA Obi-Ani, ${ISIANI}, NE Enemchukwu`,
-    venue: '',
-    type: 'Other',
-    year: null,
+    venue: 'Nigerian Forum (Nigerian Institute of International Affairs) 40(1), 69–81',
+    type: 'Article',
+    year: 2020,
   },
 ];
 
@@ -286,6 +300,7 @@ export const CITATIONS_PER_YEAR = [
 ];
 
 const doi = (d: string) => `https://doi.org/${d}`;
+const rg = (slug: string) => `https://www.researchgate.net/publication/${slug}`;
 
 // Links taken from the University of Nigeria staff profile; matched by title fragment.
 const LINKS: [string, string][] = [
@@ -309,6 +324,18 @@ const LINKS: [string, string][] = [
   ['children of the soil', 'https://journals.flvc.org/ASQ/article/view/137782/143212'],
   ['infrastructural south', doi('10.1017/asr.2024.134')],
   ['everyday state', 'https://asq.africa.ufl.edu/current-issue/'],
+  // ResearchGate pages, used where no publisher link was available.
+  ['tapestry of city life', rg('404326080_The_tapestry_of_city_life_Colonial_modernity_and_everyday_urban_experiences_in_twentieth-century_Onitsha_Nigeria')],
+  ['architecture of the bight', rg('413931107_The_architecture_of_the_bight_of_Biafra_Spatial_entanglements_by_Joseph_Godlewski_Abingdon_Routledge_2024_312_pp_13759_hardback_ISBN_978-1-0327-0404-3')],
+  ['aesthetics of belonging', rg('405640918_Claudia_Gastrow_The_Aesthetics_of_Belonging_Indigenous_Urbanism_and_City_Building_in_Oil-Boom_Luanda_University_of_North_Carolina_Press_xi_220_pp_2995_Paperback_ISBN_9781469682181')],
+  ['egypt in historical', rg('340465025_Egypt_in_Historical_Perspective_Some_Thoughts')],
+  ['back to land', rg('340464905_Back_to_Land_Interrogating_the_Israeli_Moshav_-Igbariam_Farm_Settlement_Model_in_Eastern_Nigeria_1961-1970')],
+  ['amalgamation', rg('336901133_AMALGAMATION_OF_NORTHERN_AND_SOUTHERN_PROTECTORATES_OF_NIGERIA_BLESSING_OR_CURSE')],
+  ['mistake of 1914', rg('290566908_1_The_Mistake_of_1914_100_Years_After')],
+  ['xenophobia', rg('342348253_Xenophobia_South_Africa_as_a_Mirror_on_Insecurity_in_Nigeria')],
+  ['redemption song', rg('398319491_Religion_and_Mental_Slavery_in_Nigeria_An_Analysis_of_Bob_Marley\'s_Redemption_Song')],
+  ['iwuewu', rg('395468825_Iwuewu_Unmasking_Simon_Odo_the_Enigmatic_Monarch_of_Satan_Enugu-Ezike_Southeast_Nigeria')],
+  ['green alternative', rg('343290052_THE_GREEN_ALTERNATIVE_HERDSMEN_AND_FOOD_SCARCITY_IN_UZO-UWANI_NSUKKA_DIVISON_NIGERIA_2016-2018')],
 ];
 
 export const catalogue = publications.map((p, i) => ({

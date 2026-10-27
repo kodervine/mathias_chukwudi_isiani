@@ -8,6 +8,9 @@ export const ADDRESS = '3229 Dwinelle Hall, University of California, Berkeley, 
 export const PORTRAIT = Portrait;
 export const BERKELEY_PROFILE = 'https://history.berkeley.edu/mathias-chukwudi-isiani';
 export const PUBLICATIONS_LINK = 'https://scholar.google.com/citations?user=7vnjV5AAAAAJ&hl=en';
+export const RESEARCHGATE_PROFILE = 'https://www.researchgate.net/profile/Mathias-Isiani';
+export const ORCID_PROFILE = 'https://orcid.org/0000-0003-2202-6634';
+export const LINKEDIN_PROFILE = 'https://www.linkedin.com/in/chukwudi-isiani-23672019b';
 export const UNN_PROFILE = 'https://staffprofile.unn.edu.ng/profile/4297';
 export const SCHOLAR_NOTE = 'Google Scholar';
 

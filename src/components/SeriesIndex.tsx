@@ -20,7 +20,7 @@ const SeriesIndex = () => {
               aria-expanded={isOpen}
               className="flex w-full items-baseline gap-5 py-6 text-left"
             >
-              <span className="catalog w-10 shrink-0 text-ink/50">{s.id}</span>
+              <span className="catalog w-10 shrink-0 text-ink/65">{s.id}</span>
               <span className="flex-1 font-display text-2xl md:text-4xl">{s.title}</span>
               <Plus
                 size={20}
@@ -33,7 +33,7 @@ const SeriesIndex = () => {
                 <ul className="space-y-3">
                   {related.map((p) => (
                     <li key={p.id} className="text-sm">
-                      <span className="catalog mr-3 text-ink/40">{p.year ?? 'n.d.'}</span>
+                      <span className="catalog mr-3 text-ink/65">{p.year ?? 'n.d.'}</span>
                       <Link
                         to={`/publications?q=${encodeURIComponent(p.title.slice(0, 40))}`}
                         className="underline decoration-ink/20 underline-offset-4 hover:text-clay hover:decoration-clay"

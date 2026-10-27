@@ -6,7 +6,7 @@ import {
   type PublicationType,
 } from '@/services/data/publications';
 
-const FILTERS: ('All' | PublicationType)[] = ['All', 'Article', 'Review', 'Other'];
+const FILTERS: ('All' | PublicationType)[] = ['All', 'Article', 'Review', 'Chapter', 'Other'];
 
 const Publications = () => {
   const [params] = useSearchParams();
@@ -37,7 +37,7 @@ const Publications = () => {
     <>
       <section className="bg-ink text-paper">
         <div className="container-page py-14 md:py-20">
-          <p className="catalog text-paper/50">Mathias Chukwudi Isiani</p>
+          <p className="catalog text-paper/60">Mathias Chukwudi Isiani</p>
           <h1 className="mt-4 text-5xl font-semibold md:text-7xl">Publications</h1>
         </div>
       </section>
@@ -45,7 +45,7 @@ const Publications = () => {
       <section className="container-page py-12">
         <div className="flex flex-col gap-4 md:flex-row md:items-center">
           <label className="relative flex-1">
-            <Search size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-ink/40" />
+            <Search size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-ink/65" />
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -53,7 +53,7 @@ const Publications = () => {
               className="w-full rounded border border-ink/20 bg-transparent py-3 pl-11 pr-4 font-mono text-xs outline-none focus:border-clay"
             />
           </label>
-          <div className="flex gap-2">
+          <div className="grid grid-cols-3 gap-2 sm:flex">
             {FILTERS.map((f) => (
               <button
                 key={f}
@@ -69,7 +69,7 @@ const Publications = () => {
         </div>
 
 
-        <p className="catalog mt-10 text-ink/50">
+        <p className="catalog mt-10 text-ink/65">
           {count} {count === 1 ? 'entry' : 'entries'}
         </p>
 
@@ -80,13 +80,10 @@ const Publications = () => {
               <ul className="md:col-span-5">
                 {items.map((p) => (
                   <li key={p.id} className="border-t border-ink/15 py-5">
-                    <p className="catalog text-ink/40">
-                      {p.type}
-                      {p.citations ? ` · ${p.citations} citations` : ''}
-                    </p>
+                    <p className="catalog text-ink/65">{p.type}</p>
                     <p className="mt-2 text-lg font-medium leading-snug">{p.title}</p>
                     <p className="mt-1 text-sm text-ink/65">{p.authors}</p>
-                    {p.venue && <p className="text-sm italic text-ink/50">{p.venue}</p>}
+                    {p.venue && <p className="text-sm italic text-ink/65">{p.venue}</p>}
                     {p.url && (
                       <a
                         href={p.url}

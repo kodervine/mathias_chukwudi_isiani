@@ -6,10 +6,13 @@ import {
   ASSOCIATIONS,
   BERKELEY_PROFILE,
   EMAIL,
+  LINKEDIN_PROFILE,
   METHODS,
   NAME,
+  ORCID_PROFILE,
   PORTRAIT,
   PUBLICATIONS_LINK,
+  RESEARCHGATE_PROFILE,
   SCHOLAR_RECORD,
   SECONDARY_AFFILIATION,
   SECONDARY_EMAIL,
@@ -22,11 +25,20 @@ import { APPOINTMENTS, presentations } from '@/services/data/presentations';
 import Reel from '@/components/Reel';
 import SeriesIndex from '@/components/SeriesIndex';
 
+const PROFILE_LINKS = [
+  { label: 'UC Berkeley Profile', href: BERKELEY_PROFILE },
+  { label: 'UNN Staff Profile', href: UNN_PROFILE },
+  { label: 'Google Scholar', href: PUBLICATIONS_LINK },
+  { label: 'ORCID', href: ORCID_PROFILE },
+  { label: 'LinkedIn', href: LINKEDIN_PROFILE },
+  { label: 'ResearchGate', href: RESEARCHGATE_PROFILE },
+];
+
 const Home = () => (
   <>
     <section className="bg-ink text-paper">
       <div className="container-page pb-14 pt-10 md:pb-24 md:pt-20">
-        <p className="catalog text-paper/50">{AFFILIATION}</p>
+        <p className="catalog text-paper/60">{AFFILIATION}</p>
         <div className="mt-8 flex items-center justify-between gap-4 md:gap-12">
           <h1 className="text-[clamp(2.1rem,9vw,8rem)] font-normal leading-[0.95] tracking-tight">
             Mathias
@@ -37,7 +49,7 @@ const Home = () => (
           </h1>
           <figure className="w-32 shrink-0 rotate-[3deg] border border-paper/25 bg-graphite p-1.5 pb-5 sm:w-44 md:w-72 md:p-2 md:pb-6">
             <img src={PORTRAIT} alt={NAME} className="aspect-[4/5] w-full object-cover object-top" />
-            <figcaption className="catalog mt-3 text-[10px] text-paper/50">M. C. Isiani</figcaption>
+            <figcaption className="catalog mt-3 text-[10px] text-paper/60">M. C. Isiani</figcaption>
           </figure>
         </div>
 
@@ -52,7 +64,7 @@ const Home = () => (
     <section id="research" className="container-page scroll-mt-16 py-24">
       <div className="mb-10 flex items-baseline justify-between">
         <h2 className="catalog text-ink/60">Research areas</h2>
-        <p className="catalog hidden text-ink/40 md:block">Select an area to open it</p>
+        <p className="catalog hidden text-ink/65 md:block">Select an area to open it</p>
       </div>
       <SeriesIndex />
       <p className="mt-10 max-w-2xl text-ink/65">{METHODS}</p>
@@ -61,7 +73,7 @@ const Home = () => (
     <section id="education" className="scroll-mt-16 bg-ink py-24 text-paper">
       <div className="container-page mb-12 flex items-baseline justify-between">
         <h2 className="catalog text-paper/60">Education and fellowships</h2>
-        <p className="catalog text-paper/40">Drag or use the arrows</p>
+        <p className="catalog text-paper/60">Drag or use the arrows</p>
       </div>
       <Reel />
     </section>
@@ -77,14 +89,14 @@ const Home = () => (
               to={`/publications?q=${encodeURIComponent(p.title.slice(0, 40))}`}
               className="group grid gap-2 py-5 md:grid-cols-[7rem_1fr_9rem] md:items-baseline md:gap-6"
             >
-              <span className="catalog text-ink/40">{p.year}</span>
+              <span className="catalog text-ink/65">{p.year}</span>
               <span>
                 <span className="block text-lg font-medium leading-snug group-hover:text-clay">
                   {p.title}
                 </span>
-                <span className="mt-1 block text-sm italic text-ink/55">{p.venue}</span>
+                <span className="mt-1 block text-sm italic text-ink/65">{p.venue}</span>
               </span>
-              <span className="catalog text-ink/50 md:text-right">
+              <span className="catalog text-ink/65 md:text-right">
                 {i < 2 ? `${p.citations} citations` : p.type === 'Review' ? 'Book review' : ''}
               </span>
             </Link>
@@ -102,11 +114,11 @@ const Home = () => (
     <section className="container-page py-24">
       <div className="grid gap-16 md:grid-cols-2">
         <div>
-          <h2 className="catalog mb-10 text-ink/60">Academic appointments</h2>
+          <h2 className="catalog mb-10 text-ink/60">Academic experience</h2>
           <ul className="divide-y divide-ink/15 border-y border-ink/15">
             {APPOINTMENTS.map((a) => (
               <li key={a.role} className="grid gap-1 py-5 sm:grid-cols-[8rem_1fr] sm:gap-6">
-                <span className="catalog text-ink/45">{a.period}</span>
+                <span className="catalog text-ink/65">{a.period}</span>
                 <span>
                   <span className="block text-lg font-medium">{a.role}</span>
                   <span className="block text-sm text-ink/60">{a.place}</span>
@@ -118,10 +130,15 @@ const Home = () => (
         <div>
           <h2 className="catalog mb-10 text-ink/60">Conferences and workshops</h2>
           <ul className="divide-y divide-ink/15 border-y border-ink/15">
-            {presentations.slice(0, 4).map((p) => (
-              <li key={p.event + p.year} className="grid gap-1 py-5 sm:grid-cols-[4rem_1fr] sm:gap-6">
-                <span className="catalog text-ink/45">{p.year}</span>
-                <span className="text-sm leading-snug">{p.event}</span>
+            {presentations.slice(0, 5).map((p) => (
+              <li key={p.event + p.year + (p.paper ?? '')} className="grid gap-1 py-5 sm:grid-cols-[4rem_1fr] sm:gap-6">
+                <span className="catalog text-ink/65">{p.year}</span>
+                <span>
+                  <span className="block text-base font-medium leading-snug">{p.event}</span>
+                  {p.paper && (
+                    <span className="mt-1 line-clamp-2 block text-sm italic text-ink/65">{p.paper}</span>
+                  )}
+                </span>
               </li>
             ))}
           </ul>
@@ -138,23 +155,32 @@ const Home = () => (
     <section id="contact" className="scroll-mt-16 bg-ink text-paper">
       <div className="container-page grid gap-12 py-20 md:grid-cols-3">
         <div className="md:col-span-2">
-          <p className="catalog text-paper/50">Scholarly record</p>
+          <p className="catalog text-paper/60">Scholarly record</p>
           <dl className="mt-6 grid grid-cols-2 gap-x-12 gap-y-6 sm:flex sm:flex-wrap">
             <div>
-              <dt className="catalog text-paper/50">Publications</dt>
+              <dt className="catalog text-paper/60">Publications</dt>
               <dd className="font-display text-5xl">{catalogue.length}</dd>
             </div>
             {SCHOLAR_RECORD.map((s) => (
               <div key={s.label}>
-                <dt className="catalog text-paper/50">{s.label}</dt>
+                <dt className="catalog text-paper/60">{s.label}</dt>
                 <dd className="font-display text-5xl">{s.value}</dd>
               </div>
             ))}
           </dl>
-          <p className="catalog mt-4 text-[10px] text-paper/35">Citation figures: Google Scholar</p>
+          <p className="catalog mt-4 text-[10px] text-paper/60">Citation figures: Google Scholar</p>
+
+          <p className="catalog mt-12 text-paper/60">Profiles</p>
+          <div className="mt-4 grid grid-flow-col grid-cols-2 grid-rows-3 gap-x-6 gap-y-3 text-sm text-clay sm:gap-x-10">
+            {PROFILE_LINKS.map((l) => (
+              <a key={l.label} href={l.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:underline">
+                {l.label} <ExternalLink size={12} />
+              </a>
+            ))}
+          </div>
         </div>
         <div className="text-sm">
-          <p className="catalog text-paper/50">Correspondence</p>
+          <p className="catalog text-paper/60">Correspondence</p>
           <a
             href={`mailto:${EMAIL}`}
             className="mt-4 block font-display text-2xl hover:text-clay"
@@ -169,25 +195,14 @@ const Home = () => (
             <br />
             {ADDRESS}
           </p>
-          <p className="mt-3 text-paper/45">Lecturer II, {SECONDARY_AFFILIATION}</p>
-          <div className="mt-5 flex flex-col gap-2 text-clay">
-            <a href={PUBLICATIONS_LINK} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:underline">
-              Google Scholar profile <ExternalLink size={12} />
-            </a>
-            <a href={BERKELEY_PROFILE} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:underline">
-              UC Berkeley departmental profile <ExternalLink size={12} />
-            </a>
-            <a href={UNN_PROFILE} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:underline">
-              University of Nigeria, Nsukka staff profile <ExternalLink size={12} />
-            </a>
-          </div>
+          <p className="mt-3 text-paper/60">Lecturer II, {SECONDARY_AFFILIATION}</p>
         </div>
       </div>
 
       <div className="overflow-hidden border-t border-paper/15 py-4" aria-label="Professional memberships">
         <div className="marquee-track flex w-max gap-12">
           {[...ASSOCIATIONS, ...ASSOCIATIONS].map((a, i) => (
-            <span key={i} className="catalog whitespace-nowrap text-paper/50">
+            <span key={i} className="catalog whitespace-nowrap text-paper/60">
               {a}
             </span>
           ))}

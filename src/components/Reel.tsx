@@ -42,7 +42,7 @@ const Reel = () => {
                 i === milestones.length - 1 ? 'bg-clay' : 'bg-paper'
               }`}
             />
-            <p className="catalog text-paper/50">{String(i + 1).padStart(2, '0')}</p>
+            <p className="catalog text-paper/60">{String(i + 1).padStart(2, '0')}</p>
             <p className="mt-2 font-display text-xl leading-snug text-paper">{m.label}</p>
             <p className="mt-2 text-sm text-paper/65">{m.place}</p>
             <p className="mt-1 text-sm text-clay">{m.note}</p>

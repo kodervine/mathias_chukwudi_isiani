@@ -23,14 +23,14 @@ const Presentations = () => {
     <>
       <section className="bg-ink text-paper">
         <div className="container-page py-14 md:py-20">
-          <p className="catalog text-paper/50">Mathias Chukwudi Isiani</p>
+          <p className="catalog text-paper/60">Mathias Chukwudi Isiani</p>
           <h1 className="mt-4 text-5xl font-semibold md:text-7xl">Conferences and workshops</h1>
         </div>
       </section>
 
       <section className="container-page py-12">
         <label className="relative block">
-          <Search size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-ink/40" />
+          <Search size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-ink/65" />
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -47,7 +47,7 @@ const Presentations = () => {
                 {items.map((p) => (
                   <li key={p.event + (p.paper ?? '')} className="border-t border-ink/15 py-5">
                     <p className="text-lg font-medium leading-snug">{p.event}</p>
-                    {p.place && <p className="catalog mt-1 text-ink/45">{p.place}</p>}
+                    {p.place && <p className="catalog mt-1 text-ink/65">{p.place}</p>}
                     {p.paper && <p className="mt-2 text-sm italic text-ink/65">Paper: {p.paper}</p>}
                   </li>
                 ))}

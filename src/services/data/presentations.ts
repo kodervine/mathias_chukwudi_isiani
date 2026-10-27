@@ -139,6 +139,26 @@ export const presentations: Presentation[] = [
 
 export const APPOINTMENTS = [
   {
+    role: 'Chancellor Fellow',
+    place: 'Department of History, University of California, Berkeley',
+    period: '2025–present',
+  },
+  {
+    role: 'Teaching Assistant',
+    place: 'University of Pennsylvania',
+    period: '2023–2024',
+  },
+  {
+    role: 'Graduate Resident Assistant',
+    place: 'University of Pennsylvania',
+    period: '2023–2024',
+  },
+  {
+    role: 'Graduate Student, Benjamin Franklin Fellow',
+    place: 'Department of Africana Studies, University of Pennsylvania',
+    period: '2022–2024',
+  },
+  {
     role: 'Lecturer II',
     place: 'Department of History and International Studies, University of Nigeria, Nsukka',
     period: '2022–present',

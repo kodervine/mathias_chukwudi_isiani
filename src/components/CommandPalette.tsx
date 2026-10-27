@@ -97,7 +97,7 @@ const CommandPalette = ({ open, onClose }: Props) => {
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={onKeyDown}
           placeholder="Search sections, publications and conferences"
-          className="w-full border-b border-paper/15 bg-transparent px-5 py-4 font-mono text-sm outline-none placeholder:text-paper/40"
+          className="w-full border-b border-paper/15 bg-transparent px-5 py-4 font-mono text-sm outline-none placeholder:text-paper/60"
         />
         <ul className="max-h-80 overflow-y-auto py-2">
           {items.map((item, i) => (
@@ -110,11 +110,11 @@ const CommandPalette = ({ open, onClose }: Props) => {
                 }`}
               >
                 <span className="line-clamp-1">{item.label}</span>
-                <span className="shrink-0 font-mono text-[11px] text-paper/50">{item.hint}</span>
+                <span className="shrink-0 font-mono text-[11px] text-paper/60">{item.hint}</span>
               </button>
             </li>
           ))}
-          {!items.length && <li className="px-5 py-3 text-sm text-paper/50">No matching records.</li>}
+          {!items.length && <li className="px-5 py-3 text-sm text-paper/60">No matching records.</li>}
         </ul>
       </div>
     </div>
