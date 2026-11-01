@@ -159,9 +159,14 @@ export const APPOINTMENTS = [
     period: '2022–2024',
   },
   {
+    role: 'Lecturer I',
+    place: 'Department of History and International Studies, University of Nigeria, Nsukka',
+    period: '2025–present',
+  },
+  {
     role: 'Lecturer II',
     place: 'Department of History and International Studies, University of Nigeria, Nsukka',
-    period: '2022–present',
+    period: '2022–2025',
   },
   {
     role: 'Assistant Lecturer',

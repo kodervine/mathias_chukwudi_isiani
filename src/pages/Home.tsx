@@ -130,7 +130,7 @@ const Home = () => (
         <div>
           <h2 className="catalog mb-10 text-ink/60">Conferences and workshops</h2>
           <ul className="divide-y divide-ink/15 border-y border-ink/15">
-            {presentations.slice(0, 5).map((p) => (
+            {presentations.slice(0, 6).map((p) => (
               <li key={p.event + p.year + (p.paper ?? '')} className="grid gap-1 py-5 sm:grid-cols-[4rem_1fr] sm:gap-6">
                 <span className="catalog text-ink/65">{p.year}</span>
                 <span>
@@ -195,7 +195,7 @@ const Home = () => (
             <br />
             {ADDRESS}
           </p>
-          <p className="mt-3 text-paper/60">Lecturer II, {SECONDARY_AFFILIATION}</p>
+          <p className="mt-3 text-paper/60">Lecturer I, {SECONDARY_AFFILIATION}</p>
         </div>
       </div>
 
