@@ -13,7 +13,7 @@ const Presentations = () => {
   const { groups, count } = useMemo(() => {
     const q = query.trim().toLowerCase();
     const shown = presentations.filter(
-      (p) => !q || `${p.year} ${p.event} ${p.place ?? ''} ${p.paper ?? ''}`.toLowerCase().includes(q),
+      (p) => !q || `${p.year} ${p.event} ${p.place ?? ''} ${p.role ?? ''} ${p.paper ?? ''}`.toLowerCase().includes(q),
     );
     const years = [...new Set(shown.map((p) => p.year))];
     return { groups: years.map((y) => [y, shown.filter((p) => p.year === y)] as const), count: shown.length };
@@ -48,7 +48,12 @@ const Presentations = () => {
                   <li key={p.event + (p.paper ?? '')} className="border-t border-ink/15 py-5">
                     <p className="text-lg font-medium leading-snug">{p.event}</p>
                     {p.place && <p className="catalog mt-1 text-ink/65">{p.place}</p>}
-                    {p.paper && <p className="mt-2 text-sm italic text-ink/65">Paper: {p.paper}</p>}
+                    {p.role && <p className="catalog mt-1 text-clay-dark">{p.role}</p>}
+                    {p.paper && (
+                      <p className="mt-2 text-sm italic text-ink/65">
+                        {p.role === 'Panel chair' ? 'Panel' : p.role ? 'Talk' : 'Paper'}: {p.paper}
+                      </p>
+                    )}
                   </li>
                 ))}
               </ul>

@@ -3,10 +3,36 @@ export interface Presentation {
   event: string;
   place?: string;
   paper?: string;
+  role?: string;
 }
 
-// Source: University of Nigeria, Nsukka staff profile.
+// Sources: curriculum vitae and University of Nigeria, Nsukka staff profile.
 export const presentations: Presentation[] = [
+  {
+    year: 2026,
+    event: '10th Annual Lagos Studies Association Conference, Trinity University',
+    place: 'Lagos, 16–21 June',
+    role: 'Panel chair',
+    paper: 'Architecture During War, Violence, and Conflict Periods in Africa',
+  },
+  {
+    year: 2026,
+    event: 'Decolonisation and the Promises of Development, ca. 1950–1980, Geneva Graduate Institute',
+    place: 'Geneva, 28 April – 1 May',
+    paper: 'Cemeteries of Contestations: Burial Hierarchies and Politics of Decolonisation in Onitsha, 1951–1960',
+  },
+  {
+    year: 2025,
+    event: '18th Annual Association for the Study of the Middle East and Africa (ASMEA) Conference',
+    place: 'Washington, DC, 1–3 November',
+    paper: 'Cemetery as a Dwelling Place: Architecture, Spacecraft, and African Resistance in Onitsha, Nigeria',
+  },
+  {
+    year: 2025,
+    event: 'Urban History Association (UHA) Conference',
+    place: 'Los Angeles, 9–12 October',
+    paper: 'A Dirt City: Colonial Urbanity and the Rise of Slum in Onitsha, 1857–2020',
+  },
   {
     year: 2024,
     event: '67th African Studies Association (ASA) Conference',
@@ -27,9 +53,17 @@ export const presentations: Presentation[] = [
   },
   {
     year: 2024,
-    event: '8th Annual Penn Grad Talk, University of Pennsylvania',
+    event: 'Penn Grad Talks, University of Pennsylvania',
     place: 'Philadelphia, 23 February',
+    role: 'Invited finalist',
     paper: '“What is a Church built for?” Gothic Architecture as British Imperialism in Eastern Nigeria',
+  },
+  {
+    year: 2023,
+    event: '7th Annual Lagos Studies Association International Conference, University of Lagos',
+    place: 'Lagos, 20–24 June',
+    role: 'Panel chair',
+    paper: 'Japa: Rethinking migration and identities among youths in postcolonial Nigeria',
   },
   {
     year: 2023,
@@ -149,8 +183,8 @@ export const APPOINTMENTS = [
     period: '2023–2024',
   },
   {
-    role: 'Graduate Resident Assistant',
-    place: 'University of Pennsylvania',
+    role: 'Graduate Resident Advisor',
+    place: 'Harrison College House, University of Pennsylvania',
     period: '2023–2024',
   },
   {
@@ -177,5 +211,26 @@ export const APPOINTMENTS = [
     role: 'Graduate Assistant',
     place: 'Department of History and International Studies, University of Nigeria, Nsukka',
     period: '2017–2021',
+  },
+];
+
+export const SERVICE = [
+  {
+    period: 'Ongoing',
+    text: 'Journal reviewer for African Affairs, African Identities, Journal of Asian Architecture and Building Engineering, and Journal of Cultural Heritage and Sustainable Management.',
+  },
+  { period: '2025', text: 'Volunteer, Historical Society of Pennsylvania, Philadelphia (January–March 2025).' },
+  { period: '2024', text: 'Student Assistant, Penn Museum Library, University of Pennsylvania (August–December 2024).' },
+  {
+    period: '2023–2024',
+    text: 'Graduate Fellow, Summer Institute for first years, Center for Africana Studies, University of Pennsylvania (May 2023 – December 2024).',
+  },
+];
+
+export const TRAINING = [
+  { period: '2023–2024', text: 'Center for Teaching and Learning training, University of Pennsylvania.' },
+  {
+    period: '2023',
+    text: 'Ife Summer Institute: Advancing Africa Through the Academy: Innovation, Creativity, and Service, Obafemi Awolowo University, Ile-Ife, Nigeria (24 July – 4 August 2023).',
   },
 ];

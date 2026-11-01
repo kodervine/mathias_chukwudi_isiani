@@ -21,7 +21,7 @@ import {
   UNN_PROFILE,
 } from '@/services/data/profile';
 import { catalogue, selected } from '@/services/data/publications';
-import { APPOINTMENTS, presentations } from '@/services/data/presentations';
+import { APPOINTMENTS, SERVICE, TRAINING, presentations } from '@/services/data/presentations';
 import Reel from '@/components/Reel';
 import SeriesIndex from '@/components/SeriesIndex';
 
@@ -149,6 +149,27 @@ const Home = () => (
             View all conferences <ArrowRight size={14} />
           </Link>
         </div>
+      </div>
+    </section>
+
+    <section className="container-page pb-24">
+      <div className="grid gap-16 md:grid-cols-2">
+        {[
+          { title: 'Service', rows: SERVICE },
+          { title: 'Professional development', rows: TRAINING },
+        ].map((block) => (
+          <div key={block.title}>
+            <h2 className="catalog mb-10 text-ink/60">{block.title}</h2>
+            <ul className="divide-y divide-ink/15 border-y border-ink/15">
+              {block.rows.map((r) => (
+                <li key={r.text} className="grid gap-1 py-5 sm:grid-cols-[6rem_1fr] sm:gap-6">
+                  <span className="catalog text-ink/65">{r.period}</span>
+                  <span className="text-sm leading-snug">{r.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </section>
 
